@@ -22,6 +22,6 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>CMADSession-0.0.23</finalName>
+    #<finalName>CMADSession-0.0.23</finalName>
   </build>
 </project>
