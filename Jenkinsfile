@@ -19,6 +19,7 @@ pipeline {
                 script {
                     // Build the application
                     echo "Building the application"
+                    sh 'export MAVEN_HOME=/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven/'
                     sh 'mvn clean install'
                 }
             }
