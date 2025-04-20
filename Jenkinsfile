@@ -3,7 +3,7 @@
 pipeline {
     agent {
     
-        label 'docker-slave'
+        label 'docker-slave-demo'
     }
 
     environment {
