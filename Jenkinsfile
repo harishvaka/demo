@@ -2,6 +2,7 @@
 
 pipeline {
     agent {
+        
         label 'docker-slave-demo'
     }
 
