@@ -68,20 +68,37 @@ pipeline {
     }
 
     stages {
-        stage('Checkout & Build in Container') {
+        stage('Checkout') {
             steps {
                 script {
                     docker.image('maven:3.9-eclipse-temurin-17').inside {
                         // Checkout code inside the container
                         git 'https://github.com/harishvaka/demo.git'
 
-                        // Build the application
-                        echo "Building the application"
-                        sh 'mvn clean install'
-
+                    }
+                }
+            }
+        }
+        stage('test') {
+            steps {
+                script {
+                    docker.image('maven:3.9-eclipse-temurin-17').inside{
                         // Run unit tests
                         echo "Running unit tests"
                         sh 'mvn test'
+
+                    }
+                }
+            }
+        }
+        stage('Build & Install') {
+            steps {
+                script {
+                    docker.image('maven:3.9-eclipse-temurin-17').inside{
+                         // Build the application
+                        echo "Building the application"
+                        sh 'mvn clean install'
+
                     }
                 }
             }
