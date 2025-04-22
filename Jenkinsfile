@@ -77,6 +77,7 @@ pipeline {
         stage('Approval') {
             steps {
                 script {
+                    
                     input message: 'Do you approve this deployment?', ok: 'Yes, deploy!'
                 }
             }
