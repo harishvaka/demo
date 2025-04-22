@@ -68,15 +68,16 @@ pipeline {
                     docker.image('maven:3.9-eclipse-temurin-17').inside {
                         // Checkout code inside the container
                         git 'https://github.com/harishvaka/demo.git'
-                        input {
-                           message "Should we continue?"
-                           ok "Yes, we should."
-                           submitter "alice,bob"
-                           parameters {
-                           string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                           }
 
                     }
+                }
+            }
+        }
+
+        stage('Approval') {
+            steps {
+                script {
+                    input message: 'Do you approve this deployment?', ok: 'Yes, deploy!'
                 }
             }
         }
