@@ -1,11 +1,12 @@
 
 
 pipeline {
+    
     agent {
         
         label 'docker-slave-demo'
     }
-
+    
     environment {
         APP_NAME = 'my-app'
         BUILD_DIR = 'build'
